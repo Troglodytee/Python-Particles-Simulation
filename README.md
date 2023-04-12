@@ -11,8 +11,8 @@ This is a cellular automaton that simulates different types of particles that ar
 3. Run `main.pyw`
 ## Requirements
 - Python 3.7
-- Python tkinter library
-- Python math library
-- Python random library
+- Python `tkinter` library
+- Python `math` library
+- Python `random` library
 ## Usage
 First of all you have to randomize a certain number of particle types using the first option then add the number of particles you want and finally click on the play button.
