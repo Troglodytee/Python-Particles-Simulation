@@ -43,110 +43,8 @@ class Window:
         self.__canvas.grid(row=0, column=0)
         self.__frame_options = Frame(self.__window, borderwidth=0)
         self.__frame_options.grid(row=0, column=1, sticky="nw")
-        self.__button_remove = Button(
-            self.__frame_options,
-            text="Remove all particles",
-            font=FONT,
-            command=self.__remove_particles,
-        )
-        self.__button_remove.grid(row=0, column=0, sticky="nw")
-        self.__scale_add_particles = Scale(
-            self.__frame_options,
-            orient="horizontal",
-            label="Add particles :",
-            font=FONT,
-            length=SCALE_LENGTH,
-            resolution=1,
-            from_=MIN_ADD_PARTICLES,
-            to=MAX_ADD_PARTICLES,
-        )
-        self.__scale_add_particles.grid(row=1, column=0, sticky="nw")
-        self.__scale_add_particles.set(N_ADD_PARTICLES)
-        self.__button_add = Button(
-            self.__frame_options,
-            text="Add",
-            font=FONT,
-            command=self.__add_particles,
-        )
-        self.__button_add.grid(row=2, column=0, sticky="nw")
-        self.__scale_detection_radius = Scale(
-            self.__frame_options,
-            orient="horizontal",
-            label="Detection radius :",
-            font=FONT,
-            length=SCALE_LENGTH,
-            resolution=1,
-            from_=MIN_DETECTION_RADIUS,
-            to=MAX_DETECTION_RADIUS,
-        )
-        self.__scale_detection_radius.grid(row=3, column=0, sticky="nw")
-        self.__scale_detection_radius.set(DETECTION_RADIUS)
-        self.__scale_max_speed = Scale(
-            self.__frame_options,
-            orient="horizontal",
-            label="Max speed :",
-            font=FONT,
-            length=SCALE_LENGTH,
-            resolution=1,
-            from_=MIN_SPEED,
-            to=MAX_SPEED,
-        )
-        self.__scale_max_speed.grid(row=4, column=0, sticky="nw")
-        self.__scale_max_speed.set(SPEED)
-        self.__scale_run_delay = Scale(
-            self.__frame_options,
-            orient="horizontal",
-            label="Display delay (ms) :",
-            font=FONT,
-            length=SCALE_LENGTH,
-            resolution=1,
-            from_=MIN_RUN_DELAY,
-            to=MAX_RUN_DELAY,
-        )
-        self.__scale_run_delay.grid(row=5, column=0, sticky="nw")
-        self.__scale_run_delay.set(RUN_DELAY)
-        self.__scale_particles_radius = Scale(
-            self.__frame_options,
-            orient="horizontal",
-            label="Particles radius :",
-            font=FONT,
-            length=SCALE_LENGTH,
-            resolution=1,
-            from_=MIN_PARTICLE_RADIUS,
-            to=MAX_PARTICLE_RADIUS,
-        )
-        self.__scale_particles_radius.grid(row=6, column=0, sticky="nw")
-        self.__scale_particles_radius.set(PARTICLE_RADIUS)
-        self.__scale_velocity_conservation = Scale(
-            self.__frame_options,
-            orient="horizontal",
-            label="Velocity conservation :",
-            font=FONT,
-            length=SCALE_LENGTH,
-            resolution=0.05,
-            from_=MIN_VELOCITY_CONSERVATION,
-            to=MAX_VELOCITY_CONSERVATION,
-        )
-        self.__scale_velocity_conservation.grid(row=7, column=0, sticky="nw")
-        self.__scale_velocity_conservation.set(VELOCITY_CONSERVATION)
-        self.__button_remove = Button(
-            self.__frame_options,
-            text=" ► ",
-            font=FONT,
-            command=self.__change_pause,
-        )
-        self.__button_remove.grid(row=8, column=0, sticky="nw")
-        self.__add_particles_options()
-        self.__pause = 1
-        self.__matrice = []
-        self.__particles = []
-        self.__window.mainloop()
-
-    def __add_particles_options(self):
-        self.__frame_particles = Frame(self.__window, borderwidth=1)
-        self.__frame_particles.grid(row=0, column=2, sticky="nw")
         self.__scale_randomize_types = Scale(
-            self.__frame_particles,
+            self.__frame_options,
             orient="horizontal",
             label="Randomize number :",
             font=FONT,
@@ -158,12 +56,109 @@ class Window:
         self.__scale_randomize_types.grid(row=0, column=0, sticky="nw")
         self.__scale_randomize_types.set(N_RANDOMIZE_TYPES)
         self.__button_randomize = Button(
-            self.__frame_particles,
+            self.__frame_options,
             text="Randomize",
             font=FONT,
             command=self.__randomize_types,
         )
         self.__button_randomize.grid(row=1, column=0, sticky="nw")
+        self.__button_remove = Button(
+            self.__frame_options,
+            text="Remove all particles",
+            font=FONT,
+            command=self.__remove_particles,
+        )
+        self.__button_remove.grid(row=2, column=0, sticky="nw")
+        self.__scale_add_particles = Scale(
+            self.__frame_options,
+            orient="horizontal",
+            label="Add particles :",
+            font=FONT,
+            length=SCALE_LENGTH,
+            resolution=1,
+            from_=MIN_ADD_PARTICLES,
+            to=MAX_ADD_PARTICLES,
+        )
+        self.__scale_add_particles.grid(row=3, column=0, sticky="nw")
+        self.__scale_add_particles.set(N_ADD_PARTICLES)
+        self.__button_add = Button(
+            self.__frame_options,
+            text="Add",
+            font=FONT,
+            command=self.__add_particles,
+        )
+        self.__button_add.grid(row=4, column=0, sticky="nw")
+        self.__scale_detection_radius = Scale(
+            self.__frame_options,
+            orient="horizontal",
+            label="Detection radius :",
+            font=FONT,
+            length=SCALE_LENGTH,
+            resolution=1,
+            from_=MIN_DETECTION_RADIUS,
+            to=MAX_DETECTION_RADIUS,
+        )
+        self.__scale_detection_radius.grid(row=5, column=0, sticky="nw")
+        self.__scale_detection_radius.set(DETECTION_RADIUS)
+        self.__scale_max_speed = Scale(
+            self.__frame_options,
+            orient="horizontal",
+            label="Max speed :",
+            font=FONT,
+            length=SCALE_LENGTH,
+            resolution=1,
+            from_=MIN_SPEED,
+            to=MAX_SPEED,
+        )
+        self.__scale_max_speed.grid(row=6, column=0, sticky="nw")
+        self.__scale_max_speed.set(SPEED)
+        self.__scale_run_delay = Scale(
+            self.__frame_options,
+            orient="horizontal",
+            label="Display delay (ms) :",
+            font=FONT,
+            length=SCALE_LENGTH,
+            resolution=1,
+            from_=MIN_RUN_DELAY,
+            to=MAX_RUN_DELAY,
+        )
+        self.__scale_run_delay.grid(row=7, column=0, sticky="nw")
+        self.__scale_run_delay.set(RUN_DELAY)
+        self.__scale_particles_radius = Scale(
+            self.__frame_options,
+            orient="horizontal",
+            label="Particles radius :",
+            font=FONT,
+            length=SCALE_LENGTH,
+            resolution=1,
+            from_=MIN_PARTICLE_RADIUS,
+            to=MAX_PARTICLE_RADIUS,
+        )
+        self.__scale_particles_radius.grid(row=8, column=0, sticky="nw")
+        self.__scale_particles_radius.set(PARTICLE_RADIUS)
+        self.__scale_velocity_conservation = Scale(
+            self.__frame_options,
+            orient="horizontal",
+            label="Velocity conservation :",
+            font=FONT,
+            length=SCALE_LENGTH,
+            resolution=0.05,
+            from_=MIN_VELOCITY_CONSERVATION,
+            to=MAX_VELOCITY_CONSERVATION,
+        )
+        self.__scale_velocity_conservation.grid(row=9, column=0, sticky="nw")
+        self.__scale_velocity_conservation.set(VELOCITY_CONSERVATION)
+        self.__button_pause = Button(
+            self.__frame_options,
+            text=" ► ",
+            font=FONT,
+            command=self.__change_pause,
+        )
+        self.__button_pause.grid(row=10, column=0, sticky="nw")
+        self.__pause = 1
+        self.__matrice = []
+        self.__particles = []
+        self.__window.mainloop()
 
     def __randomize_types(self):
         for i in self.__matrice:
@@ -183,7 +178,7 @@ class Window:
 
     def __change_pause(self):
         self.__pause = 1-self.__pause
-        self.__button_remove["text"] = [ "| |"," ► "][self.__pause]
+        self.__button_pause["text"] = [ "| |"," ► "][self.__pause]
         if not self.__pause:
             self.__run()
 
@@ -200,6 +195,8 @@ class Window:
                     1,
                     0
                 )]
+            self.__pause = 1
+            self.__button_pause["text"] = " ► "
             self.__run()
 
     def __run(self):
@@ -209,41 +206,42 @@ class Window:
         max_speed = self.__scale_max_speed.get()
         particle_radius = self.__scale_particles_radius.get()
         velocity_conservation = self.__scale_velocity_conservation.get()
-        for i in range(n_particles-1):
-            p1 = self.__particles[i]
-            for j in range(i+1, n_particles):
-                p2 = self.__particles[j]
-                v = p2.get_coords()-p1.get_coords()
-                distance = v.norm()
-                if distance <= detection_radius:
-                    p1.interact(
-                        p2,
-                        v,
-                        distance,
-                        max_speed,
-                        particle_radius*2,
-                        self.__matrice
-                    )
-            p1.compute_interact(max_speed, velocity_conservation)
-        for i in range(n_particles-1):
-            p1 = self.__particles[i]
-            for j in range(i+1, n_particles):
-                p2 = self.__particles[j]
-                v = p2.get_coords()-p1.get_coords()
-                distance = v.norm()
-                if distance <= particle_radius*2:
-                    p1.take_away(p2, v, distance, particle_radius*2)
-            p1.compute_take_away(particle_radius)
-            self.__canvas.create_oval(
-                p1.get_x()-particle_radius,
-                p1.get_y()-particle_radius,
-                p1.get_x()+particle_radius,
-                p1.get_y()+particle_radius,
-                fill=self.__matrice[p1.get_type()][0],
-                outline=self.__matrice[p1.get_type()][0],
-            )
-        if not self.__pause:
-            self.__window.after(self.__scale_run_delay.get(), self.__run)
+        if n_particles:
+            for i in range(n_particles-1):
+                p1 = self.__particles[i]
+                for j in range(i+1, n_particles):
+                    p2 = self.__particles[j]
+                    v = p2.get_coords()-p1.get_coords()
+                    distance = v.norm()
+                    if distance <= detection_radius:
+                        p1.interact(
+                            p2,
+                            v,
+                            distance,
+                            max_speed,
+                            particle_radius*2,
+                            self.__matrice
+                        )
+                p1.compute_interact(max_speed, velocity_conservation)
+            for i in range(n_particles-1):
+                p1 = self.__particles[i]
+                for j in range(i+1, n_particles):
+                    p2 = self.__particles[j]
+                    v = p2.get_coords()-p1.get_coords()
+                    distance = v.norm()
+                    if distance <= particle_radius*2:
+                        p1.take_away(p2, v, distance, particle_radius*2)
+                p1.compute_take_away(particle_radius)
+                self.__canvas.create_oval(
+                    p1.get_x()-particle_radius,
+                    p1.get_y()-particle_radius,
+                    p1.get_x()+particle_radius,
+                    p1.get_y()+particle_radius,
+                    fill=self.__matrice[p1.get_type()][0],
+                    outline=self.__matrice[p1.get_type()][0],
+                )
+            if not self.__pause:
+                self.__window.after(self.__scale_run_delay.get(), self.__run)
 
 
 class Particle:
